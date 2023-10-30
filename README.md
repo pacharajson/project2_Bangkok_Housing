@@ -1,5 +1,7 @@
-# Business Problem Statement
-Affordable Housing Access: Investigate ways to improve access to affordable housing in Bangkok for lower-income residents while maintaining quality and sustainability.
+# Project 2: Bangkok Housing
+
+# Business Problem Statement: Affordable Housing Access
+Investigate ways to improve access to affordable housing in Bangkok for lower-income residents while maintaining quality and sustainability.
 
 Many people in Bangkok are looking for affordable housing options. Creating a platform (website/application) that helps users find affordable housing units based on their budget, family size, and preferred subdistrict can serve this need.
 
@@ -64,10 +66,10 @@ Calculate outliers by using IQR to know lower bound and upperbound. However, the
 Importantly, I found there are wrong data on `subdistrict` column which are property name on this feature. Then I look district data which contains subdistrict data. After that, I replace correct subdistrict data from district data to fill the particular column.
 
 ## Distributions
-![distribution_feature](../image/distribution_feature.png)
+![distribution_feature](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/distribution_feature.png)
 
 ## Correlations
-![correlation](../image/correlation.png)
+![correlation](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/correlation.png)
 
 # Pre-processing
 ## Possible Selected Features from correlation
@@ -84,17 +86,22 @@ Importantly, I found there are wrong data on `subdistrict` column which are prop
 11. price (Key Feature)
 
 ## Modelling
-![linreg_pred_model](../image/linreg_pred_model.png)
-![mse_linreg](../image/mse_linreg.png)
+![linreg_pred_model](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/linreg_pred_model.png)
+
+![mse_linreg](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/mse_linreg.png)
 
 I used linear regression from train/test split and extend ridge model to get more accurate
 
 ### Ridge Model
 To compare with lasso and elasticnet, R2 ridge score is better than R2 lasso score about 10%. 
-![r2_score_compare](../image/r2_score_compare_model.png)
+![r2_score_compare](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/r2_score_compare_model.png)
 
-When I calculate by using mean standard error(MSE) score, it show below:
-![mse_ridge_score](../image/mse_ridge_score.png)
+When I calculate by using root mean standard error(RMSE) score, it show below:
+![mse_ridge_score](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/mse_ridge_score.png)
+
+### Lasso Model
+When I calculate by using root mean standard error(RMSE) score, it show below:
+![mse_lasso_score](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/lasso_rmse_12577216.png)
 
 # Conclusions and Recommendations
 In conclusion, the application helps people to find affordable range around 2.5 million to 4 million Baht depend on in this following:
