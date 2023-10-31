@@ -33,7 +33,7 @@ Many people in Bangkok are looking for affordable housing options. Creating a pl
 
 # Exploratory Data Analysis
 ## Identify Missing data
-![missing_data](../image/missing_data.png)
+![missing_data](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/missing_data.png)
 
 There are many missing data in this following:
 1. total_units
@@ -57,8 +57,9 @@ total_units, bedrooms, baths, floor_level, land_area
 4. Random Integer for floor_level which I set range 3-30 levels because I think most condominium are not higher than 32 levels
 
 ## Outliers
-![outliers_province_by_price](../image/outliers_province_by_price.png)
-![outliers_outliers_property_type_by_price](../image/outliers_property_type_by_price.png)
+![outliers_province_by_price](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/outliers_province_by_price.png)
+
+![outliers_outliers_property_type_by_price](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/outliers_property_type_by_price.png)
 
 Calculate outliers by using IQR to know lower bound and upperbound. However, these data mostly upperbound. then, I remove outliers to make more accuracy on prediction model.
 
