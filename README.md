@@ -1,11 +1,12 @@
 # Project 2: Bangkok Housing
 
-# Business Problem Statement: Affordable Housing Access
-Investigate ways to improve access to affordable housing in Bangkok for lower-income residents while maintaining quality and sustainability.
+## Business Problem Statement: Affordable Housing Access
+According to property company (Land and House Co., Ltd.), The compapny would like to know the property price in each property type in Bangkok and around Bangkok (urban area such as Samut Prakan and Nonthaburi) to make further research and development in property that can help company to survey house pricing and will expand property in Bangkok.
+- Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
+- Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
+- Where is the most price sensitivity? and where is the least?
 
-Many people in Bangkok are looking for affordable housing options. Creating a platform (website/application) that helps users find affordable housing units based on their budget, family size, and preferred subdistrict can serve this need.
-
-# Data Dictionary
+## Data Dictionary
 | Column Name | Data Type | Description |
 |---|---|---|
 | id | int | ID of selling item |
@@ -31,9 +32,9 @@ Many people in Bangkok are looking for affordable housing options. Creating a pl
 | month_built | string | Month built (January-December) |
 | price | float | Selling price (target value) |
 
-# Exploratory Data Analysis
-## Identify Missing data
-![missing_data](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/missing_data.png)
+## Exploratory Data Analysis
+### Identify Missing data
+![missing_data](image/missing_data.png)
 
 There are many missing data in this following:
 1. total_units
@@ -57,9 +58,8 @@ total_units, bedrooms, baths, floor_level, land_area
 4. Random Integer for floor_level which I set range 3-30 levels because I think most condominium are not higher than 32 levels
 
 ## Outliers
-![outliers_province_by_price](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/outliers_province_by_price.png)
-
-![outliers_outliers_property_type_by_price](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/outliers_property_type_by_price.png)
+![outliers_province_by_price](image/outliers_province_by_price.png)
+![outliers_outliers_property_type_by_price](image/outliers_property_type_by_price.png)
 
 Calculate outliers by using IQR to know lower bound and upperbound. However, these data mostly upperbound. then, I remove outliers to make more accuracy on prediction model.
 
@@ -67,10 +67,10 @@ Calculate outliers by using IQR to know lower bound and upperbound. However, the
 Importantly, I found there are wrong data on `subdistrict` column which are property name on this feature. Then I look district data which contains subdistrict data. After that, I replace correct subdistrict data from district data to fill the particular column.
 
 ## Distributions
-![distribution_feature](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/distribution_feature.png)
+![distribution_feature](image/distribution_feature.png)
 
 ## Correlations
-![correlation](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/correlation.png)
+![correlation](image/correlation.png)
 
 # Pre-processing
 ## Possible Selected Features from correlation
@@ -87,30 +87,37 @@ Importantly, I found there are wrong data on `subdistrict` column which are prop
 11. price (Key Feature)
 
 ## Modelling
-![linreg_pred_model](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/linreg_pred_model.png)
+![linreg_pred_model](image/linreg_pred_model.png)
 
-![mse_linreg](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/mse_linreg.png)
+![mse_linreg](image/mse_linreg.png)
 
 I used linear regression from train/test split and extend ridge model to get more accurate
 
 ### Ridge Model
 To compare with lasso and elasticnet, R2 ridge score is better than R2 lasso score about 10%. 
-![r2_score_compare](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/r2_score_compare_model.png)
+![r2_score_compare](image/r2_score_compare_model.png)
 
 When I calculate by using root mean standard error(RMSE) score, it show below:
-![mse_ridge_score](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/mse_ridge_score.png)
+![mse_ridge_score](image/mse_ridge_score.png)
 
 ### Lasso Model
 When I calculate by using root mean standard error(RMSE) score, it show below:
-![mse_lasso_score](https://github.com/pacharajson/project2_Bangkok_Housing/blob/main/image/lasso_rmse_12577216.png)
+![mse_lasso_score](image/lasso_rmse_12577216.png)
 
 # Conclusions and Recommendations
-In conclusion, the application helps people to find affordable range around 2.5 million to 4 million Baht depend on in this following:
-> 1. How large of land area (house and townhome), floor area(condominium)
-> 2. The location (subdistrict) that influence the price such as Wattana and other high population is high price, but other areas are much more cheaper.
-> 3. Floor level at Condominium can influence price because if higher level is much more expensive.
+After prediction with tuning parameter and modeling, the best house price prediction model is ridge model which got root mean square error score: 1,245,066. Moreover, the lasso model's root mean square is 1,250,707. These RMSE is a small different. To sum up with problem statement which will answer in this following:
+
+1. Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
+- the property which is in Talat Khwan subdistrict, Nonthaburi province, the price is 1,500,000 Thai Baht.
+
+2. Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
+- The cheapest price is approximate 1.5 million Thai Baht in Nonthaburi where near MRT: Ministry of Public Health Station
+
+3.  Where is the most price sensitivity? and where is the least?
+- the highest price sensitivity is in subdistrict: Bangsue where near MRT: Bang Pho Station is approximately 12.5 million Thai Baht
+- the lowest price sensitivity is in subdistrict: Nonthaburi(subdistrict: Bang Rak Phatthana) where near MRT: Bang Phai Station is approximately 510,000 Thai Baht
 
 Recommendations
-> 1. Comparing price between user's interested locations.
-> 2. Do market research to apply with property type. For example, this data can be applied with customer relationship management data that can focus specific property type such as 20-30 years mostly buy condominium and 30-40 years who have family members prefer to buy house.
-> 3. To apply with above, there is a financial range data or the application has feature that calculate income, expenses, and family size to choose property.
+1. Other features such as latitude and longitude can be effective to know exactly where the property is to help understanding for the company
+2. May be use hyper parameter tuning in its model
+3. Elastic Net model may give other result or better result than these two models to compare
