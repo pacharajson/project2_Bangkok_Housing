@@ -87,25 +87,30 @@ Importantly, I found there are wrong data on `subdistrict` column which are prop
 11. price (Key Feature)
 
 ## Modelling
+### Linear Regression Model
 ![linreg_pred_model](image/linreg_pred_model.png)
 
 ![mse_linreg](image/mse_linreg.png)
 
-I used linear regression from train/test split and extend ridge model to get more accurate
+I used `Linear Regression` from train/test split and extend ridge model to get more accurate
 
 ### Ridge Model
 To compare with lasso and elasticnet, R2 ridge score is better than R2 lasso score about 10%. 
 ![r2_score_compare](image/r2_score_compare_model.png)
 
 When I calculate by using root mean standard error(RMSE) score, it show below:
-![mse_ridge_score](image/mse_ridge_score.png)
+![mse1_2_ridge_model](image/mse1_2_ridge_model.png)
+![dev_ridge](image/dev_ridge.png)
 
 ### Lasso Model
 When I calculate by using root mean standard error(RMSE) score, it show below:
-![mse_lasso_score](image/lasso_rmse_12577216.png)
+![lasso_rmse](image/lasso_rmse.png)
+![dev_lasso](image/dev_lasso.png)
 
 # Conclusions and Recommendations
-After prediction with tuning parameter and modeling, the best house price prediction model is ridge model which got root mean square error score: 1,245,066. Moreover, the lasso model's root mean square is 1,250,707. These RMSE is a small different. To sum up with problem statement which will answer in this following:
+![ridge_feature_coef.png](image/ridge_feature_coef.png)
+
+The table above states that which feature (factor) inference with housing price prediction. The highest coefficient score is floor_area, followed by baths. These factors can help the company think about their pricing to segment the target. Then, the best house price prediction model is `Ridge` model which got root mean square error score: 1,245,066. Moreover, the `Lasso` model's root mean square is 1,250,707. These RMSE is a small different. To sum up with problem statement which will answer in this following:
 
 1. Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
 - the property which is in Talat Khwan subdistrict, Nonthaburi province, the price is 1,500,000 Thai Baht.
@@ -114,8 +119,12 @@ After prediction with tuning parameter and modeling, the best house price predic
 - The cheapest price is approximate 1.5 million Thai Baht in Nonthaburi where near MRT: Ministry of Public Health Station
 
 3.  Where is the most price sensitivity? and where is the least?
-- the highest price sensitivity is in subdistrict: Bangsue where near MRT: Bang Pho Station is approximately 12.5 million Thai Baht
-- the lowest price sensitivity is in subdistrict: Nonthaburi(subdistrict: Bang Rak Phatthana) where near MRT: Bang Phai Station is approximately 510,000 Thai Baht
+- the highest price sensitivity is in subdistrict: Klong Tan Nuea which coefficient score is 541173
+- the lowest price sensitivity is in subdistrict: Bang Rak Phattana which coefficient score is -162237
+
+![ridge_subdistrict_highest_coef.png](image/ridge_subdistrict_highest_coef.png)
+![ridge_subdistrict_lowest_coef.png](image/ridge_subdistrict_lowest_coef.png)
+
 
 Recommendations
 1. Other features such as latitude and longitude can be effective to know exactly where the property is to help understanding for the company
