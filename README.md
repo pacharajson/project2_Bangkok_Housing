@@ -1,8 +1,13 @@
 # Project 2: Bangkok Housing
 
 ## Business Problem Statement: Affordable Housing Access
+<<<<<<< HEAD
 According to property company (Land and House Co., Ltd.), The company would like to know the property price in  in Bangkok and around Bangkok (urban area such as Samut Prakan and Nonthaburi) to make further research and development in property that can help company to survey house pricing and will expand property in Bangkok.
 
+=======
+According to property company (Land and House Co., Ltd.), The company would like to know the property price in each property type in Bangkok and around Bangkok (urban area such as Samut Prakan and Nonthaburi) to make further research and development in property that can help company to survey house pricing and will expand property in Bangkok.
+- Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
+>>>>>>> e23ed470dbafe32b0aacdf99fbcd413aa3923b66
 - Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
 - Where is the most price sensitivity? and where is the least?
 
