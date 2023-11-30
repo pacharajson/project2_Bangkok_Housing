@@ -1,8 +1,8 @@
 # Project 2: Bangkok Housing
 
 ## Business Problem Statement: Affordable Housing Access
-According to property company (Land and House Co., Ltd.), The compapny would like to know the property price in each property type in Bangkok and around Bangkok (urban area such as Samut Prakan and Nonthaburi) to make further research and development in property that can help company to survey house pricing and will expand property in Bangkok.
-- Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
+According to property company (Land and House Co., Ltd.), The company would like to know the property price in  in Bangkok and around Bangkok (urban area such as Samut Prakan and Nonthaburi) to make further research and development in property that can help company to survey house pricing and will expand property in Bangkok.
+
 - Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
 - Where is the most price sensitivity? and where is the least?
 
@@ -87,46 +87,31 @@ Importantly, I found there are wrong data on `subdistrict` column which are prop
 11. price (Key Feature)
 
 ## Modelling
-### Linear Regression Model
-![linreg_pred_model](image/linreg_pred_model.png)
+| Model Name | Train R2 Score | Test R2 Score | RMSE Score |
+| ---------- | -------------- | ------------- | ---------- |
+| Linear Regression | 0.69 | 0.64 | 2.1956980989774768e+17 |
+| Ridge Regression | 0.69 | 0.64 | 1258135.78 |
+| Lasso Regression | 0.67 | 0.69 | 1201882.60 |
 
-![mse_linreg](image/mse_linreg.png)
-
-I used `Linear Regression` from train/test split and extend ridge model to get more accurate
-
-### Ridge Model
-To compare with lasso and elasticnet, R2 ridge score is better than R2 lasso score about 10%. 
-![r2_score_compare](image/r2_score_compare_model.png)
-
-When I calculate by using root mean standard error(RMSE) score, it show below:
-![mse1_2_ridge_model](image/mse1_2_ridge_model.png)
-![dev_ridge](image/dev_ridge.png)
-
-### Lasso Model
-When I calculate by using root mean standard error(RMSE) score, it show below:
-![lasso_rmse](image/lasso_rmse.png)
-![dev_lasso](image/dev_lasso.png)
+I used linear regression from train/test split and extend `Ridge` and `Lasso` model to get more accurate and better mean square error results.
 
 # Conclusions and Recommendations
-![ridge_feature_coef.png](image/ridge_feature_coef.png)
+![lasso_coef_factors.png](image/lasso_coef_factors.png)
 
-The table above states that which feature (factor) inference with housing price prediction. The highest coefficient score is floor_area, followed by baths. These factors can help the company think about their pricing to segment the target. Then, the best house price prediction model is `Ridge` model which got root mean square error score: 1,245,066. Moreover, the `Lasso` model's root mean square is 1,250,707. These RMSE is a small different. To sum up with problem statement which will answer in this following:
+The table above states that which feature (factor) inference with housing price prediction. The highest coefficient score is baths, followed by floor_area. These factors can help the company think about their pricing to segment the target. Then, the best house price prediction model is the `Lasso` model's root mean square is 1,250,707. These RMSE is an error approximately 1.2 million Baht. Plus,it is not overfitting and highest R2 score. To sum up with problem statement which will answer in this following:
 
-1. Company target market has many customer segmentation. Now the company estimate house pricing approximately 1.5 million to 3.5 million Thai Baht because nowdays, people are willing to save their money and utility cost is increased.
-- the property which is in Talat Khwan subdistrict, Nonthaburi province, the price is 1,500,000 Thai Baht.
-
-2. Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
+> Company is looking for property near station, for example, BTS, MRT, ART, and other skytrain stations.
 - The cheapest price is approximate 1.5 million Thai Baht in Nonthaburi where near MRT: Ministry of Public Health Station
 
-3.  Where is the most price sensitivity? and where is the least?
-- the highest price sensitivity is in subdistrict: Klong Tan Nuea which coefficient score is 541173
-- the lowest price sensitivity is in subdistrict: Bang Rak Phattana which coefficient score is -162237
+>  Where is the most price factor influence? and where is the least?
+- the highest influence price is in subdistrict: Klong Tan Nuea which coefficient score is 619902.
+- the lowest influence price is in subdistrict: Bang Rak Phattana which coefficient score is -136423.
 
-![ridge_subdistrict_highest_coef.png](image/ridge_subdistrict_highest_coef.png)
-![ridge_subdistrict_lowest_coef.png](image/ridge_subdistrict_lowest_coef.png)
-
+![lasso_highest_subdis_coef.png](image/lasso_highest_subdis_coef.png)
+![lasso_subdist_coef.png](image/lasso_subdist_coef.png)
 
 Recommendations
+
 1. Other features such as latitude and longitude can be effective to know exactly where the property is to help understanding for the company
 2. May be use hyper parameter tuning in its model
 3. Elastic Net model may give other result or better result than these two models to compare
